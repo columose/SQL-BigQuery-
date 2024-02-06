@@ -1,25 +1,25 @@
-## This is a small repo where I've added some projects to further my understanding of SQL's capabilities. I queried some public datasets from BigQuery, and analysed the extracted data with Python.
+# This is a small repo where I've added some projects to further my understanding of SQL's capabilities. I queried some public datasets from BigQuery, and analysed the extracted data with Python.
 
-# Query information about the deadliest earthquakes to data
+## Query information about the deadliest earthquakes to data
 SELECT year, eq_mag_mb, country, location_name, deaths, damage_millions_dollars, houses_damaged
 FROM `bigquery-public-data.noaa_significant_earthquakes.earthquakes`
 ORDER BY deaths DESC
 LIMIT 10;
 
-# Query information about which countries are affected by a tsunami as a result of an earthquake
+## Query information about which countries are affected by a tsunami as a result of an earthquake
 SELECT COUNT(flag_tsunami), country
 FROM `bigquery-public-data.noaa_significant_earthquakes.earthquakes`
 WHERE flag_tsunami = 'Tsu'
 GROUP BY country
 ORDER BY 1 DESC;
 
-# Query the most recent earthquakes and their damage
+## Query the most recent earthquakes and their damage
 SELECT year, country, deaths, damage_millions_dollars, eq_mag_mfa
 FROM `bigquery-public-data.noaa_significant_earthquakes.earthquakes`
 ORDER BY year DESC
 LIMIT 10;
 
-# Query the highest dead tolls per country due to earthquakes
+## Query the highest dead tolls per country due to earthquakes
 SELECT country,
   SUM(deaths) AS total_deaths,
   SUM(damage_millions_dollars) AS total_damage_millions_dollars
