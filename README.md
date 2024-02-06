@@ -2,8 +2,11 @@
 
 ## Query information about the deadliest earthquakes to data
 SELECT year, eq_mag_mb, country, location_name, deaths, damage_millions_dollars, houses_damaged
+
 FROM `bigquery-public-data.noaa_significant_earthquakes.earthquakes`
+
 ORDER BY deaths DESC
+
 LIMIT 10;
 
 ## Query information about which countries are affected by a tsunami as a result of an earthquake
